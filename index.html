@@ -532,15 +532,6 @@ body.modal{overflow:hidden}
       </div>
     </div>
 
-    <a class="reel reveal" id="reel" href="https://youtu.be/VkXA-NuBh9E" data-yt-inline="VkXA-NuBh9E" target="_blank" rel="noopener" aria-label="비전필름크루 브랜딩 영상 재생">
-      <img src="assets/hero.jpg" alt="">
-      <div class="in">
-        <span class="k">BRANDING FILM</span>
-        <h3 class="kr-h">비전필름크루 브랜딩 영상</h3>
-        <span class="pbtn" aria-hidden="true"></span>
-      </div>
-    </a>
-
     <div class="pf-groups">
       <div class="pf-group" data-g="cjs">
         <div class="pf-gh reveal"><h3 class="kr-h">청.찬.사 1집 : 출정<small>퍼포먼스 비디오 제작</small></h3><a href="https://youtube.com/playlist?list=PLKa-RRfvetqM21TfPSoTFxEhG267dolLy&si=eHOHHPgAPLzEmvJo" target="_blank" rel="noopener">재생목록 보기</a></div>
@@ -733,8 +724,6 @@ document.querySelectorAll('[data-yt]').forEach(a=>a.addEventListener('click',e=>
 document.getElementById('ytx').onclick=closeYt;
 ytm.addEventListener('click',e=>{if(e.target===ytm)closeYt()});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&ytm.classList.contains('open'))closeYt()});
-const reel=document.getElementById('reel');
-reel.addEventListener('click',e=>{if(reel.classList.contains('playing'))return;e.preventDefault();reel.classList.add('playing');reel.insertAdjacentHTML('beforeend',ytFrame(reel.dataset.ytInline))});
 
 // copy
 const toast=document.getElementById('toast');let tt;
