@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VISION FILM CREW · 비전필름크루</title>
+<meta name="description" content="눈앞에 보이는 씬(scene)을 넘어 비전으로 — 예배와 집회 미디어를 섬기는 기독교 미디어 크루, 비전필름크루">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#2B2B2B; --bg-2:#232323; --bg-3:#333; --ink:#F2F1EE; --mute:#A9A8A6; --line:rgba(255,255,255,.12);
+  --or:#EA6D24; --or-2:#FF8A45; --paper:#F4F2EE; --paper-ink:#1E1E1E;
+  --wrap:1240px; --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans KR",system-ui,sans-serif;font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
+.kr-h{font-family:"Do Hyeon","IBM Plex Sans KR",sans-serif;font-weight:400;letter-spacing:-.01em;line-height:1.25}
+.vf{display:inline-block;line-height:0}
+.vf svg{height:100%;width:auto;overflow:visible}
+.or{color:var(--or)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Header ---------- */
+.hdr{position:fixed;inset:0 0 auto 0;z-index:50;height:72px;display:flex;align-items:center;transition:background .35s,border-color .35s,backdrop-filter .35s;border-bottom:1px solid transparent}
+.hdr.solid{background:rgba(35,35,35,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo{height:20px;color:var(--or)}
+.nav{display:flex;gap:4px}
+.nav a{position:relative;padding:8px 16px;font-size:15px;font-weight:500;color:#e8e7e4;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:16px;right:16px;bottom:2px;height:2px;background:var(--or);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav a:hover,.nav a.on{color:#fff}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.nav .cta{margin-left:10px;background:var(--or);color:#fff;border-radius:99px;padding:8px 20px}
+.nav .cta::after{display:none}
+.nav .cta:hover{background:var(--or-2)}
+.burger{display:none;width:40px;height:40px;position:relative}
+.burger span{position:absolute;left:9px;right:9px;height:2px;background:#fff;transition:transform .3s,opacity .3s}
+.burger span:nth-child(1){top:13px}.burger span:nth-child(2){top:19px}.burger span:nth-child(3){top:25px}
+.menu-open .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-open .burger span:nth-child(2){opacity:0}
+.menu-open .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:-4% 0 0 0;background:url(assets/hero.jpg) center 30%/cover no-repeat;transform:scale(1.06);animation:heroZoom 14s var(--ease) forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(25,25,25,.92) 0%,rgba(25,25,25,.55) 48%,rgba(25,25,25,.15) 100%),linear-gradient(0deg,rgba(43,43,43,1) 0%,rgba(43,43,43,0) 40%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-bottom:12vh}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;color:var(--or);font-size:14px;font-weight:600;letter-spacing:.2em;margin-bottom:28px}
+.hero-eyebrow::before{content:"";width:36px;height:1px;background:var(--or)}
+.hero-title{width:min(100%,1000px)}
+.vf.wide{display:block}.vf.wide svg{width:100%;height:auto}
+.hero-we{width:43.9%;color:#CFCDCA;margin-bottom:clamp(10px,1.6vw,22px)}
+.hero-name{width:100%;color:var(--or)}
+.hero-copy{margin-top:40px;max-width:560px}
+.hero-copy h1{font-size:clamp(24px,2.6vw,34px);color:#fff}
+.hero-copy p{margin-top:12px;color:#cfcecb;font-size:16px}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:99px;font-weight:600;font-size:15px;transition:background .25s,color .25s,border-color .25s,transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-or{background:var(--or);color:#fff}
+.btn-or:hover{background:var(--or-2)}
+.btn-ghost{border:1px solid rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn .play{width:22px;height:22px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.btn .play::after{content:"";border-left:7px solid var(--or);border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
+.scroll-hint{position:absolute;z-index:2;right:32px;bottom:40px;writing-mode:vertical-rl;font-size:11px;letter-spacing:.3em;color:#bbb;display:flex;align-items:center;gap:12px}
+.scroll-hint::after{content:"";width:1px;height:60px;background:linear-gradient(var(--or),transparent);animation:drip 2s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- Section commons ---------- */
+section{position:relative}
+.sec{padding:140px 0}
+.sec-label{display:flex;align-items:center;gap:14px;color:var(--or);font-size:14px;font-weight:600;margin-bottom:28px}
+.sec-label b{font-family:"Do Hyeon";font-size:18px;font-weight:400}
+.sec-label::after{content:"";flex:1;max-width:120px;height:1px;background:var(--or);opacity:.7}
+.sec-title{font-size:clamp(32px,4.4vw,56px);color:#fff}
+.sec-lead{margin-top:20px;color:var(--mute);font-size:17px;max-width:640px}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* ---------- About ---------- */
+.about{text-align:center}
+.about .statement{font-size:clamp(30px,4.6vw,62px);color:#fff;line-height:1.3}
+.about .statement em{font-style:normal;color:var(--or)}
+.about .body{margin:40px auto 0;max-width:720px;color:#cfcecb;font-size:18px;line-height:1.95}
+.about .body .vf{height:.82em;color:var(--or);vertical-align:-.04em;margin-right:.2em}
+.mosaic{margin-top:90px;display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:90px;gap:14px}
+.mosaic figure{overflow:hidden;border-radius:6px;background:#222}
+.mosaic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease),filter .6s;filter:saturate(.85)}
+.mosaic figure:hover img{transform:scale(1.05);filter:saturate(1.05)}
+.m1{grid-column:1/6;grid-row:span 4}.m2{grid-column:6/9;grid-row:span 2}.m3{grid-column:9/13;grid-row:span 3}
+.m4{grid-column:6/9;grid-row:span 2}.m5{grid-column:9/13;grid-row:span 3}.m6{grid-column:1/4;grid-row:span 2}.m7{grid-column:4/9;grid-row:span 2}
+.stats{margin-top:110px;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:44px 20px;text-align:left;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat .n{font-family:"Do Hyeon";font-size:clamp(44px,5vw,64px);color:var(--or);line-height:1}
+.stat .n small{font-size:.45em;margin-left:4px;color:#fff}
+.stat .t{margin-top:14px;color:var(--mute);font-size:15px}
+
+/* ---------- Ministry ---------- */
+.ministry{background:var(--bg-2)}
+.mi-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:64px}
+.mi-list{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:20px}
+.mi{position:relative;min-height:560px;border-radius:10px;overflow:hidden;display:flex;align-items:flex-end;isolation:isolate}
+.mi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--ease)}
+.mi::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(20,20,20,.95) 0%,rgba(20,20,20,.35) 55%,rgba(20,20,20,.1) 100%);transition:background .5s}
+.mi:hover img{transform:scale(1.06)}
+.mi:hover::before{background:linear-gradient(0deg,rgba(20,20,20,.95) 0%,rgba(234,109,36,.28) 100%)}
+.mi-in{padding:34px}
+.mi-num{font-family:"Do Hyeon";font-size:84px;line-height:.9;color:var(--or)}
+.mi h3{font-size:30px;margin-top:10px;color:#fff}
+.mi p{margin-top:10px;color:#d5d4d1;font-size:15px}
+.mi .tag{display:inline-block;margin-top:18px;font-size:12px;letter-spacing:.12em;color:var(--or);border:1px solid rgba(234,109,36,.6);padding:4px 12px;border-radius:99px}
+
+/* ---------- Strengths ---------- */
+.st-item{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;padding:90px 0;border-top:1px solid var(--line)}
+.sec-title + .st-item{border-top:0;padding-top:70px}
+.st-item.flip .st-media{order:2}
+.st-no{font-family:"Do Hyeon";font-size:16px;color:var(--or);letter-spacing:.06em}
+.st-item h3{margin-top:14px;font-size:clamp(26px,3vw,38px);color:#fff}
+.st-item p{margin-top:18px;color:#c9c8c5;font-size:16.5px;line-height:1.9}
+.st-item ul{margin-top:22px;list-style:none;display:grid;gap:10px}
+.st-item li{position:relative;padding-left:22px;color:#e5e4e1;font-size:15px}
+.st-item li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--or)}
+.st-media{position:relative}
+.st-media .frame{border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.st-media img{width:100%;height:100%;object-fit:cover}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.duo figure{border-radius:10px;overflow:hidden}
+.duo figure img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.cap{margin-top:10px;font-size:13px;color:var(--mute)}
+.stack{position:relative;height:440px}
+.stack .a{position:absolute;left:0;top:0;width:78%;border-radius:10px;overflow:hidden}
+.stack .b{position:absolute;right:0;bottom:0;width:58%;border-radius:10px;overflow:hidden;border:6px solid var(--bg)}
+.stack img{width:100%;aspect-ratio:3/2;object-fit:cover}
+/* before / after */
+.ba{position:relative;aspect-ratio:16/9;border-radius:10px;overflow:hidden;user-select:none;touch-action:pan-y;cursor:ew-resize;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba .after{clip-path:inset(0 0 0 var(--p,50%))}
+.ba .bar{position:absolute;top:0;bottom:0;left:var(--p,50%);width:2px;background:#fff;transform:translateX(-1px)}
+.ba .knob{position:absolute;top:50%;left:var(--p,50%);width:48px;height:48px;border-radius:50%;background:var(--or);transform:translate(-50%,-50%);display:grid;place-items:center;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.ba .knob::before{content:"◀ ▶";font-size:10px;letter-spacing:2px;color:#fff}
+.ba .lbl{position:absolute;bottom:14px;font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;background:rgba(0,0,0,.6);backdrop-filter:blur(6px)}
+.ba .lbl.l{left:14px}.ba .lbl.r{right:14px;background:rgba(234,109,36,.9)}
+.ba input{position:absolute;inset:0;opacity:0;cursor:ew-resize;width:100%}
+
+/* ---------- Partners ---------- */
+.partners{background:var(--paper);color:var(--paper-ink)}
+.partners .sec-title{color:var(--paper-ink)}
+.partners .sec-lead{color:#5f5e5b}
+.pt-grid{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pt{position:relative;background:var(--bg);border-radius:12px;padding:56px 44px 40px;min-height:340px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;transition:transform .5s var(--ease)}
+.pt:hover{transform:translateY(-6px)}
+.pt .lg{height:110px;display:flex;align-items:center}
+.pt .lg img{max-height:100%;width:auto}
+.pt .lg.mid img{max-height:54px}
+.pt h3{color:#fff;font-size:26px;margin-top:40px}
+.pt p{color:#bcbbb8;font-size:15px;margin-top:6px}
+.pt .go{margin-top:22px;display:inline-flex;gap:8px;align-items:center;color:var(--or);font-weight:600;font-size:14px}
+.pt .go::after{content:"→";transition:transform .3s}
+.pt:hover .go::after{transform:translateX(5px)}
+
+/* ---------- Portfolio ---------- */
+.pf-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{padding:9px 18px;border-radius:99px;border:1px solid var(--line);font-size:14px;color:#ddd;transition:all .25s}
+.tab:hover{border-color:#777}
+.tab.on{background:var(--or);border-color:var(--or);color:#fff}
+.reel{margin-top:56px;position:relative;display:block;border-radius:12px;overflow:hidden;aspect-ratio:21/9}
+.reel img{width:100%;height:100%;object-fit:cover;object-position:center 35%;transition:transform 1.4s var(--ease)}
+.reel:hover img{transform:scale(1.04)}
+.reel::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(20,20,20,.85),rgba(20,20,20,.2))}
+.reel .in{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:0 6%}
+.reel .k{color:var(--or);font-size:13px;letter-spacing:.25em;font-weight:600}
+.reel h3{font-size:clamp(28px,3.6vw,48px);color:#fff;margin-top:8px}
+.reel .pbtn{margin-top:26px;width:76px;height:76px;border-radius:50%;background:var(--or);display:grid;place-items:center;transition:transform .35s var(--ease)}
+.reel:hover .pbtn{transform:scale(1.1)}
+.reel .pbtn::after{content:"";border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:5px}
+.pf-groups{margin-top:70px;display:grid;gap:72px}
+.pf-group[hidden]{display:none}
+.pf-gh{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.pf-gh h3{font-size:26px;color:#fff}
+.pf-gh h3 small{font-family:"IBM Plex Sans KR";font-size:14px;color:var(--or);margin-left:12px;font-weight:500}
+.pf-gh a{font-size:14px;color:var(--mute);transition:color .2s}
+.pf-gh a:hover{color:var(--or)}
+.pf-gh a::after{content:" ↗"}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.thumb{display:block;border-radius:8px;overflow:hidden;position:relative;background:#1d1d1d}
+.thumb img{width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .8s var(--ease),filter .4s}
+.thumb:hover img{transform:scale(1.06);filter:brightness(.75)}
+.thumb .t{padding:12px 4px 0;font-size:14px;color:#ddd}
+.thumb-wrap{display:block}
+.thumb-wrap .ttl{display:block;margin-top:10px;font-size:14.5px;color:#e5e4e1}
+.thumb-wrap .sub{display:block;font-size:12.5px;color:var(--mute)}
+a.thumb-wrap .thumb::after{content:"";position:absolute;inset:0;margin:auto;width:52px;height:52px;border-radius:50%;background:rgba(234,109,36,.95) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9 6l9 6-9 6z'/%3E%3C/svg%3E") center/22px no-repeat;opacity:0;transform:scale(.7);transition:all .35s var(--ease)}
+a.thumb-wrap:hover .thumb::after{opacity:1;transform:none}
+.thumbs.three{grid-template-columns:1.6fr 1fr 1fr}
+
+/* ---------- Sketch carousel ---------- */
+.sketch{background:var(--bg-2);overflow:hidden}
+.sk-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.arrows{display:flex;gap:10px}
+.arrows button{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);font-size:18px;transition:all .25s}
+.arrows button:hover{background:var(--or);border-color:var(--or)}
+.track{margin-top:50px;display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-left:max(32px,calc((100vw - var(--wrap))/2 + 32px));padding-right:32px;scroll-padding-left:max(32px,calc((100vw - var(--wrap))/2 + 32px))}
+.track::-webkit-scrollbar{display:none}
+.card{flex:0 0 clamp(260px,30vw,400px);scroll-snap-align:start}
+.card .im{border-radius:10px;overflow:hidden;aspect-ratio:4/3}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.card:hover img{transform:scale(1.05)}
+.card .meta{margin-top:16px;font-size:13px;color:var(--or);font-weight:600}
+.card h4{margin-top:4px;font-size:18px;font-weight:500;color:#fff}
+
+/* ---------- CTA ---------- */
+.cta-sec{padding:160px 0 140px;text-align:center;overflow:hidden}
+.cta-title{width:min(100%,1040px);margin:0 auto}
+.cta-sec .big{width:92.4%;margin:0 auto;color:transparent}
+.cta-sec .big path{stroke:#77756f;stroke-width:3}
+.cta-sec .big2{width:100%;margin:clamp(10px,1.6vw,20px) auto 0;color:#E8E6E2}
+.cta-sec .big2 path.hl{fill:var(--or)}
+.cta-sec .big2.in path.hl{animation:glow 2.4s var(--ease) .6s both}
+@keyframes glow{0%{fill:#E8E6E2}100%{fill:var(--or)}}
+.cta-sec p{margin-top:40px;font-size:20px;color:#ddd}
+.cta-sec .btn{margin-top:36px}
+.marquee{margin-top:110px;display:flex;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0}
+.marquee .row{display:flex;gap:60px;padding-right:60px;animation:mq 40s linear infinite;flex-shrink:0;align-items:center}
+.marquee .vf{height:36px;color:#4a4a49}
+.marquee .dot{width:10px;height:10px;border-radius:50%;background:var(--or)}
+@keyframes mq{to{transform:translateX(-100%)}}
+
+/* ---------- Contact ---------- */
+.contact{background:var(--or);color:#1b1b1b;padding:110px 0}
+.ct-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:start}
+.contact h2{font-size:clamp(34px,4.4vw,58px);color:#1b1b1b}
+.contact .lead{margin-top:18px;font-size:17px;color:#2b1a10;max-width:440px}
+.ct-list{list-style:none;border-top:2px solid #1b1b1b}
+.ct-list li{display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:14px;padding:20px 0;border-bottom:1px solid rgba(0,0,0,.25)}
+.ct-list .k{font-size:13px;font-weight:700;letter-spacing:.12em}
+.ct-list .v{font-size:18px;font-weight:500}
+.ct-list .v a:hover{text-decoration:underline}
+.copy{font-size:12px;font-weight:600;padding:6px 12px;border:1px solid #1b1b1b;border-radius:99px;transition:all .2s}
+.copy:hover{background:#1b1b1b;color:var(--or)}
+
+/* ---------- Footer ---------- */
+footer{padding:70px 0 50px;background:#1c1c1c;color:#8f8e8b;font-size:14px}
+.ft{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.ft .logo{height:22px}
+.ft-nav{display:flex;gap:26px;flex-wrap:wrap}
+.ft-nav a:hover{color:var(--or)}
+.ft-bot{margin-top:50px;padding-top:24px;border-top:1px solid #2e2e2e;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px}
+
+.reel.playing{cursor:default}
+.reel.playing::before{display:none}
+.reel iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3}
+.reel.playing{aspect-ratio:16/9}
+.ytm{position:fixed;inset:0;z-index:200;background:rgba(10,10,10,.9);display:grid;place-items:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .3s}
+.ytm.open{opacity:1;pointer-events:auto}
+.ytm .box{position:relative;width:min(1200px,100%);aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6)}
+.ytm iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ytm .x{position:absolute;top:20px;right:24px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:22px;line-height:48px;text-align:center}
+.ytm .x:hover{background:var(--or)}
+body.modal{overflow:hidden}
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,30px);background:#111;color:#fff;padding:12px 22px;border-radius:99px;font-size:14px;opacity:0;pointer-events:none;transition:all .35s var(--ease);z-index:99}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1024px){
+  .mi-list{grid-template-columns:1fr 1fr}.mi:first-child{grid-column:1/-1;min-height:440px}
+  .st-item{grid-template-columns:1fr;gap:40px;padding:70px 0}.st-item.flip .st-media{order:0}
+  .thumbs{grid-template-columns:repeat(2,1fr)}.thumbs.three{grid-template-columns:1fr 1fr}.thumbs.three .thumb-wrap:first-child{grid-column:1/-1}
+  .ct-grid{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .nav{position:fixed;inset:72px 0 auto 0;flex-direction:column;background:rgba(30,30,30,.98);padding:16px 24px 28px;gap:0;transform:translateY(-10px);opacity:0;pointer-events:none;transition:all .3s var(--ease);border-bottom:1px solid var(--line)}
+  .menu-open .nav{opacity:1;transform:none;pointer-events:auto}
+  .nav a{padding:16px 4px;font-size:18px;border-bottom:1px solid var(--line)}
+  .nav a::after{display:none}
+  .nav .cta{margin:18px 0 0;text-align:center;border-bottom:0}
+  .menu-open .hdr{background:rgba(30,30,30,.98)}
+  .burger{display:block}
+  .sec{padding:100px 0}
+  .stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .mosaic{grid-auto-rows:70px;gap:8px}
+  .pt-grid{grid-template-columns:1fr}
+  .scroll-hint{display:none}
+}
+@media (max-width:600px){
+  .wrap{padding:0 20px}
+  .mi-list{grid-template-columns:1fr}.mi{min-height:420px}
+  .mosaic{grid-template-columns:repeat(6,1fr)}
+  .m1{grid-column:1/-1;grid-row:span 4}.m2,.m4{grid-column:span 3;grid-row:span 2}.m3,.m5{grid-column:span 3;grid-row:span 2}.m6{grid-column:span 3;grid-row:span 2}.m7{grid-column:span 3;grid-row:span 2}
+  .thumbs,.thumbs.three{grid-template-columns:1fr 1fr;gap:10px}
+  .duo{grid-template-columns:1fr}
+  .stack{height:320px}
+  .reel{aspect-ratio:4/3}
+  .ct-list li{grid-template-columns:80px 1fr;}.ct-list .copy{grid-column:2;justify-self:start}
+  .arrows{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a href="#top" class="logo vf" data-vf="VISI@N FILM CREW" aria-label="VISION FILM CREW 홈"></a>
+    <nav class="nav" id="nav" aria-label="주요 메뉴">
+      <a href="#about">크루 소개</a>
+      <a href="#ministry">사역 소개</a>
+      <a href="#strengths">강점</a>
+      <a href="#partners">파트너 Team</a>
+      <a href="#portfolio">포트폴리오</a>
+      <a href="#contact" class="cta">문의하기</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" role="img" aria-label="예배 현장에서 카메라를 운용하는 크루원"></div>
+  <div class="wrap">
+    <div class="hero-eyebrow">CHRISTIAN MEDIA CREW</div>
+    <div class="hero-title"><div class="vf wide hero-we" data-vf="WE ARE"></div>
+    <div class="vf wide hero-name" data-vf="VISI@N FILM CREW"></div></div>
+    <div class="hero-copy">
+      <h1 class="kr-h">눈앞에 보이는 씬(scene)을 넘어 비전으로</h1>
+      <p>예배와 집회의 현장을 섬기는 기독교 미디어 크루, 비전필름크루입니다.</p>
+    </div>
+    <div class="hero-btns">
+      <a class="btn btn-or" href="https://youtu.be/VkXA-NuBh9E" data-yt="VkXA-NuBh9E" target="_blank" rel="noopener"><span class="play"></span>브랜딩 영상 보기</a>
+      <a class="btn btn-ghost" href="#portfolio">포트폴리오 둘러보기</a>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- 01 ABOUT -->
+<section class="sec about" id="about">
+  <div class="wrap">
+    <div class="sec-label reveal" style="justify-content:center"><b>01</b> 크루 소개</div>
+    <h2 class="statement kr-h reveal d1">미디어가 하나님의 사랑을 전하는<br><em>강력한 통로</em>가 된 오늘날</h2>
+    <p class="body reveal d2">
+      <span class="vf" data-vf="VISI@N FILM CREW"></span>(비전필름크루)는
+      눈앞에 보이는 세상을 넘어 하나님의 온전한 비전을 바라보며,
+      다양한 예배팀과 교회 및 기독교 단체의 예배와 집회 미디어를 섬김으로써
+      미디어 전도에 힘쓰는 기독교 미디어 크루입니다.
+    </p>
+    <div class="mosaic">
+      <figure class="m1 reveal"><img src="assets/hm-cam.jpg" alt="삼각대 위 카메라를 운용하는 촬영 감독" style="object-position:center 25%"></figure>
+      <figure class="m2 reveal d1"><img src="assets/hm-switcher.jpg" alt="중계 스위처 앞의 크루원"></figure>
+      <figure class="m3 reveal d2"><img src="assets/hm-2.jpg" alt="예배 중 핸드헬드 촬영"></figure>
+      <figure class="m4 reveal d1"><img src="assets/crew-group.jpg" alt="야외 행사 후 단체 사진"></figure>
+      <figure class="m5 reveal d2"><img src="assets/hm-4.jpg" alt="회중 사이에서 촬영 중인 크루원"></figure>
+      <figure class="m6 reveal"><img src="assets/hm-1.jpg" alt="카메라를 든 크루원"></figure>
+      <figure class="m7 reveal d1"><img src="assets/mv-prod.jpg" alt="밴드 퍼포먼스 촬영 현장"></figure>
+    </div>
+    <div class="stats">
+      <div class="stat reveal"><div class="n" data-count="10">0<small>명</small></div><div class="t">교회 방송 경력 크루원</div></div>
+      <div class="stat reveal d1"><div class="n" data-count="5">0<small>년+</small></div><div class="t">크루원 평균 방송 경력</div></div>
+      <div class="stat reveal d2"><div class="n" data-count="3">0<small>개 분야</small></div><div class="t">중계 · 촬영 · 뮤직비디오</div></div>
+      <div class="stat reveal d3"><div class="n">LOG</div><div class="t">시네마 워크플로우 라이브 중계</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 MINISTRY -->
+<section class="sec ministry" id="ministry">
+  <div class="wrap">
+    <div class="mi-head">
+      <div>
+        <div class="sec-label reveal"><b>02</b> 사역 소개</div>
+        <h2 class="sec-title kr-h reveal d1">예배의 순간을<br>온전히 담고, 전합니다</h2>
+      </div>
+      <p class="sec-lead reveal d2" style="max-width:420px">현장 중계 시스템 설계부터 실황 촬영, 뮤직비디오 기획·제작까지. 예배와 집회의 모든 장면을 섬깁니다.</p>
+    </div>
+    <div class="mi-list">
+      <article class="mi reveal">
+        <img src="assets/svc-live.jpg" alt="라이브 중계 스위처와 모니터">
+        <div class="mi-in">
+          <div class="mi-num">1</div>
+          <h3 class="kr-h">예배 / 집회 라이브 중계 방송</h3>
+          <p>예배 / 집회 현장의 중계 시스템을 설계하고 유튜브로 방송합니다.</p>
+          <span class="tag">LIVE STREAMING</span>
+        </div>
+      </article>
+      <article class="mi reveal d1">
+        <img src="assets/svc-shoot.jpg" alt="피아노 옆에서 카메라로 촬영하는 크루원">
+        <div class="mi-in">
+          <div class="mi-num">2</div>
+          <h3 class="kr-h">예배 / 집회 촬영</h3>
+          <p>예배 / 집회의 찬양 실황과 예배 영상을 촬영합니다. (중계 동시 촬영 가능)</p>
+          <span class="tag">WORSHIP FILMING</span>
+        </div>
+      </article>
+      <article class="mi reveal d2">
+        <img src="assets/svc-mv.jpg" alt="야외에 세팅된 시네마 카메라" style="object-position:center 40%">
+        <div class="mi-in">
+          <div class="mi-num">3</div>
+          <h3 class="kr-h">퍼포먼스 / 뮤직 비디오</h3>
+          <p>기독교 찬양팀 및 인디 아티스트의 뮤직비디오를 기획하고 제작합니다.</p>
+          <span class="tag">MUSIC VIDEO</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 03 STRENGTHS -->
+<section class="sec" id="strengths">
+  <div class="wrap">
+    <div class="sec-label reveal"><b>03</b> ‘비전필름크루’만의 강점</div>
+    <h2 class="sec-title kr-h reveal d1">예배 현장 어디서든,<br>전천후 미디어 사역</h2>
+
+    <div class="st-item">
+      <div class="st-media reveal">
+        <div class="stack">
+          <div class="a"><img src="assets/crew-sail.jpg" alt="청.찬.사 2집 항해 퍼포먼스 비디오 제작 크루 단체 사진"></div>
+          <div class="b"><img src="assets/hm-5.jpg" alt="예배 중 촬영하는 크루원"></div>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div class="st-no">STRENGTH 01</div>
+        <h3 class="kr-h">풍부한 인력풀</h3>
+        <p>‘비전필름크루’는 평균 5년 이상의 교회 방송 경력을 지닌 10명의 크루원으로 구성되어 있습니다. 풍부한 인력과 촬영, 중계 역량을 바탕으로 예배 현장 어디서든 전천후 미디어 사역을 감당할 준비가 되어 있습니다.</p>
+        <ul><li>평균 5년 이상 교회 방송 경력</li><li>10명의 크루원 · 다중 카메라 운용</li></ul>
+      </div>
+    </div>
+
+    <div class="st-item flip">
+      <div class="st-media reveal">
+        <div class="frame"><img src="assets/mv-prod.jpg" alt="뮤직비디오 촬영 현장" style="aspect-ratio:3/2"></div>
+      </div>
+      <div class="reveal d1">
+        <div class="st-no">STRENGTH 02</div>
+        <h3 class="kr-h">기획부터 촬영, 편집까지 하나로:<br>All-in-One 뮤비 프로덕션</h3>
+        <p>실력 있는 제작 실무진이 상주하는 비전필름크루에서 뮤직비디오의 모든 단계를 유기적이고 완성도 높게 이끌어갑니다.</p>
+        <ul><li>기획 · 콘티</li><li>촬영 · 조명</li><li>편집 · 컬러 그레이딩</li></ul>
+      </div>
+    </div>
+
+    <div class="st-item">
+      <div class="st-media reveal">
+        <div class="ba" id="ba" style="--p:50%">
+          <img src="assets/lut-before.jpg" alt="LUT 적용 전 S-Log3 방송 화면">
+          <img class="after" src="assets/lut-after.jpg" alt="LUT 적용 후 S-Log3+Rec.709 자체 보정 LUT 방송 화면">
+          <div class="bar"></div><div class="knob"></div>
+          <span class="lbl l">LUT 적용 전 · S-Log3</span>
+          <span class="lbl r">LUT 적용 후 · 자체 보정 LUT</span>
+          <input type="range" min="0" max="100" value="50" aria-label="LUT 적용 전후 비교 슬라이더">
+        </div>
+        <div class="cap">← 좌우로 드래그해 LUT 적용 전후를 비교해 보세요</div>
+      </div>
+      <div class="reveal d1">
+        <div class="st-no">STRENGTH 03</div>
+        <h3 class="kr-h">LOG 워크플로우 기반의<br>차별화된 중계 시스템</h3>
+        <p>시네마 촬영에 사용되는 LOG 픽처 프로파일을 라이브 중계 시스템에 도입하여 깊이 있는 계조와 풍부한 색감을 표현합니다. 물빠진 톤의 기본 LOG 신호를 그대로 내보내지 않고, 전문 LUT 프로세서를 통해 보정된 최적의 컬러 화면으로 실시간 송출합니다.</p>
+        <ul><li>S-Log3 촬영 → 자체 보정 LUT (Rec.709)</li><li>전문 LUT 프로세서로 실시간 송출</li></ul>
+      </div>
+    </div>
+
+    <div class="st-item flip">
+      <div class="st-media reveal">
+        <div class="duo">
+          <figure><img src="assets/sub-screen.jpg" alt="현장 스크린 자막 화면"><figcaption class="cap">현장 스크린 자막 화면</figcaption></figure>
+          <figure><img src="assets/sub-stream.jpg" alt="유튜브 스트림 하단 자막 화면"><figcaption class="cap">유튜브 스트림 자막 동시 연동</figcaption></figure>
+        </div>
+      </div>
+      <div class="reveal d1">
+        <div class="st-no">STRENGTH 04</div>
+        <h3 class="kr-h">현장과 방송을 아우르는<br>듀얼 자막 송출</h3>
+        <p>‘ProPresenter’를 활용해 현장 메인 스크린과 온라인 유튜브 중계 화면을 동시에 연동합니다. 현장에는 시인성 높은 자막을, 온라인 방송에는 영상과 어우러지는 하단 자막(로어 서드)을 배치하는 등 각 출력 환경에 최적화된 맞춤 자막을 실시간으로 송출합니다.</p>
+        <ul><li>현장: 시인성 높은 풀스크린 자막</li><li>온라인: 영상과 어우러지는 로어 서드</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PARTNERS -->
+<section class="sec partners" id="partners">
+  <div class="wrap">
+    <div class="sec-label reveal"><b>04</b> 파트너 Team</div>
+    <h2 class="sec-title kr-h reveal d1">함께 예배를 만들어 가는 팀</h2>
+    <p class="sec-lead reveal d2">비전필름크루와 함께 찬양과 예배의 순간을 영상으로 기록해 온 파트너 팀을 소개합니다.</p>
+    <div class="pt-grid">
+      <a class="pt reveal" href="https://youtube.com/playlist?list=PLKa-RRfvetqM21TfPSoTFxEhG267dolLy&si=eHOHHPgAPLzEmvJo" target="_blank" rel="noopener">
+        <div class="lg"><img src="assets/logo_cjs.png" alt="청.찬.사 로고"></div>
+        <div>
+          <h3 class="kr-h">청.찬.사</h3>
+          <p>1집 ‘출정’ · 2집 ‘항해’ 퍼포먼스 비디오 제작</p>
+          <span class="go">작업 영상 보기</span>
+        </div>
+      </a>
+      <a class="pt reveal d1" href="https://youtube.com/playlist?list=PLJwAzyxD4AUQ&si=JS33w98M_1_H1inJ" target="_blank" rel="noopener">
+        <div class="lg mid"><img src="assets/logo_midbaar.png" alt="MIDBAAR 로고"></div>
+        <div>
+          <h3 class="kr-h">미드바르 MIDBAAR</h3>
+          <p>Studio Worship 뮤직 비디오 제작</p>
+          <span class="go">작업 영상 보기</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 05 PORTFOLIO -->
+<section class="sec" id="portfolio">
+  <div class="wrap">
+    <div class="pf-head">
+      <div>
+        <div class="sec-label reveal"><b>05</b> 포트폴리오</div>
+        <h2 class="sec-title kr-h reveal d1">우리가 담아 온 장면들</h2>
+      </div>
+      <div class="tabs reveal d2" role="tablist">
+        <button class="tab on" data-f="all" role="tab" aria-selected="true">전체</button>
+        <button class="tab" data-f="cjs" role="tab" aria-selected="false">청.찬.사</button>
+        <button class="tab" data-f="mid" role="tab" aria-selected="false">MIDBAAR</button>
+        <button class="tab" data-f="hm" role="tab" aria-selected="false">헤리티지 메스콰이어</button>
+      </div>
+    </div>
+
+    <a class="reel reveal" id="reel" href="https://youtu.be/VkXA-NuBh9E" data-yt-inline="VkXA-NuBh9E" target="_blank" rel="noopener" aria-label="비전필름크루 브랜딩 영상 재생">
+      <img src="assets/hero.jpg" alt="">
+      <div class="in">
+        <span class="k">BRANDING FILM</span>
+        <h3 class="kr-h">비전필름크루 브랜딩 영상</h3>
+        <span class="pbtn" aria-hidden="true"></span>
+      </div>
+    </a>
+
+    <div class="pf-groups">
+      <div class="pf-group" data-g="cjs">
+        <div class="pf-gh reveal"><h3 class="kr-h">청.찬.사 1집 : 출정<small>퍼포먼스 비디오 제작</small></h3><a href="https://youtube.com/playlist?list=PLKa-RRfvetqM21TfPSoTFxEhG267dolLy&si=eHOHHPgAPLzEmvJo" target="_blank" rel="noopener">재생목록 보기</a></div>
+        <div class="thumbs">
+          <a class="thumb-wrap reveal" href="https://youtube.com/playlist?list=PLKa-RRfvetqM21TfPSoTFxEhG267dolLy&si=eHOHHPgAPLzEmvJo" target="_blank" rel="noopener"><div class="thumb"><img src="assets/cjs1-offthewall.jpg" alt=""></div><span class="ttl">OFF THE WALL</span></a>
+          <a class="thumb-wrap reveal d1" href="https://youtube.com/playlist?list=PLKa-RRfvetqM21TfPSoTFxEhG267dolLy&si=eHOHHPgAPLzEmvJo" target="_blank" rel="noopener"><div class="thumb"><img src="assets/cjs1-solomon.jpg" alt=""></div><span class="ttl">솔로몬의 기도</span></a>
+          <a class="thumb-wrap reveal d2" href="https://youtube.com/playlist?list=PLKa-RRfvetqM21TfPSoTFxEhG267dolLy&si=eHOHHPgAPLzEmvJo" target="_blank" rel="noopener"><div class="thumb"><img src="assets/cjs1-blessed.jpg" alt=""></div><span class="ttl">복이 있나니</span></a>
+          <a class="thumb-wrap reveal d3" href="https://youtube.com/playlist?list=PLKa-RRfvetqM21TfPSoTFxEhG267dolLy&si=eHOHHPgAPLzEmvJo" target="_blank" rel="noopener"><div class="thumb"><img src="assets/cjs1-cry.jpg" alt=""></div><span class="ttl">울어도 괜찮다</span></a>
+        </div>
+      </div>
+
+      <div class="pf-group" data-g="mid">
+        <div class="pf-gh reveal"><h3 class="kr-h">미드바르 Studio Worship<small>뮤직 비디오 제작</small></h3><a href="https://youtube.com/playlist?list=PLJwAzyxD4AUQ&si=JS33w98M_1_H1inJ" target="_blank" rel="noopener">재생목록 보기</a></div>
+        <div class="thumbs" style="grid-template-columns:1fr 1fr">
+          <a class="thumb-wrap reveal" href="https://youtube.com/playlist?list=PLJwAzyxD4AUQ&si=JS33w98M_1_H1inJ" target="_blank" rel="noopener"><div class="thumb"><img src="assets/mid-cry.jpg" alt=""></div><span class="ttl">울어도 괜찮다</span><span class="sub">MIDBAAR (With. 최성호)</span></a>
+          <a class="thumb-wrap reveal d1" href="https://youtube.com/playlist?list=PLJwAzyxD4AUQ&si=JS33w98M_1_H1inJ" target="_blank" rel="noopener"><div class="thumb"><img src="assets/mid-solomon.jpg" alt=""></div><span class="ttl">솔로몬의 기도</span><span class="sub">MIDBAAR (With. 최성호)</span></a>
+        </div>
+      </div>
+
+      <div class="pf-group" data-g="cjs">
+        <div class="pf-gh reveal"><h3 class="kr-h">청.찬.사 2집 : 항해<small>퍼포먼스 비디오 제작</small></h3></div>
+        <div class="thumbs">
+          <div class="thumb-wrap reveal"><div class="thumb"><img src="assets/cjs2-john.jpg" alt=""></div><span class="ttl">요한복음 16:33</span></div>
+          <div class="thumb-wrap reveal d1"><div class="thumb"><img src="assets/cjs2-surf.jpg" alt=""></div><span class="ttl">Surf</span><span class="sub">MIDBAAR / Feat. ARA</span></div>
+          <div class="thumb-wrap reveal d2"><div class="thumb"><img src="assets/cjs2-sail.jpg" alt=""></div><span class="ttl">항해 (Sailing)</span></div>
+          <div class="thumb-wrap reveal d3"><div class="thumb"><img src="assets/cjs2-grace.jpg" alt=""></div><span class="ttl">나의 은혜 예수이네</span><span class="sub">MIDBAAR / Feat. 김지호</span></div>
+        </div>
+      </div>
+
+      <div class="pf-group" data-g="hm">
+        <div class="pf-gh reveal"><h3 class="kr-h">헤리티지 메스콰이어<small>정기예배 유튜브 라이브 실황 중계</small></h3></div>
+        <div class="thumbs">
+          <a class="thumb-wrap reveal" href="https://youtu.be/l7lN8Knhh_Q" data-yt="l7lN8Knhh_Q" target="_blank" rel="noopener"><div class="thumb"><img src="assets/hm-switcher.jpg" alt=""></div><span class="ttl">정기예배 유튜브 라이브 중계</span><span class="sub">해당 방송 중계</span></a>
+          <a class="thumb-wrap reveal d1" href="https://www.instagram.com/reel/DaVBzccAl-M/" target="_blank" rel="noopener"><div class="thumb"><img src="assets/hm-3.jpg" alt=""></div><span class="ttl">현장 스위처 캠 릴스</span><span class="sub">Instagram Reels</span></a>
+          <a class="thumb-wrap reveal d2" href="https://www.youtube.com/watch?v=firmlofsQBA" data-yt="firmlofsQBA" target="_blank" rel="noopener"><div class="thumb"><img src="assets/hm-live1.jpg" alt=""></div><span class="ttl">I Feel Your Spirit</span><span class="sub">라이브 실황</span></a>
+          <a class="thumb-wrap reveal" href="https://www.youtube.com/watch?v=M3obzrKhi6s" data-yt="M3obzrKhi6s" target="_blank" rel="noopener" style="grid-column:auto"><div class="thumb"><img src="assets/hm-live2.jpg" alt=""></div><span class="ttl">Let it Rain</span><span class="sub">라이브 실황</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIELD SKETCH CAROUSEL -->
+<section class="sec sketch" aria-label="현장 스케치">
+  <div class="wrap">
+    <div class="sk-head">
+      <div>
+        <div class="sec-label reveal">BEHIND THE SCENE</div>
+        <h2 class="sec-title kr-h reveal d1">예배 현장 곳곳에,<br>비전필름크루가 있습니다</h2>
+      </div>
+      <div class="arrows"><button id="prev" aria-label="이전">←</button><button id="next" aria-label="다음">→</button></div>
+    </div>
+  </div>
+  <div class="track" id="track">
+    <article class="card"><div class="im"><img src="assets/hm-switcher.jpg" alt=""></div><div class="meta">LIVE · 중계</div><h4>현장 스위처 운용</h4></article>
+    <article class="card"><div class="im"><img src="assets/hm-2.jpg" alt=""></div><div class="meta">FILMING · 촬영</div><h4>찬양 실황 핸드헬드 촬영</h4></article>
+    <article class="card"><div class="im"><img src="assets/hm-6.jpg" alt=""></div><div class="meta">FILMING · 촬영</div><h4>짐벌 무빙 촬영</h4></article>
+    <article class="card"><div class="im"><img src="assets/hm-1.jpg" alt=""></div><div class="meta">CREW · 크루</div><h4>예배를 섬기는 크루원</h4></article>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="wrap">
+    <div class="cta-title"><h2 class="sr-only">Beyond the Scene, Toward the Vision</h2>
+    <div class="vf wide big reveal" data-vf="BEY@ND THE SCENE"></div>
+    <div class="vf wide big2 reveal d1" data-vf="TOWARD THE {VISI@N}"></div></div>
+    <p class="kr-h reveal d2">예배와 집회의 미디어, 비전필름크루가 함께 섬기겠습니다.</p>
+    <a class="btn btn-or reveal d3" href="#contact">사역 문의하기 →</a>
+  </div>
+  <div class="marquee" aria-hidden="true">
+    <div class="row" id="mq"></div><div class="row" id="mq2"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap ct-grid">
+    <div class="reveal">
+      <h2 class="kr-h">CONTACT</h2>
+      <p class="lead">예배 / 집회 라이브 중계, 실황 촬영, 퍼포먼스 · 뮤직비디오 제작 문의를 기다립니다.</p>
+    </div>
+    <ul class="ct-list reveal d1">
+      <li><span class="k">DIRECTOR</span><span class="v">김찬혁</span><span></span></li>
+      <li><span class="k">H.P</span><span class="v"><a href="tel:01094799291">010 9479 9291</a></span><button class="copy" data-copy="010-9479-9291">복사</button></li>
+      <li><span class="k">E-MAIL</span><span class="v"><a href="mailto:calico285@gmail.com">calico285@gmail.com</a></span><button class="copy" data-copy="calico285@gmail.com">복사</button></li>
+      <li><span class="k">ADDRESS</span><span class="v">서울시 강남구 역삼로 9길 24 B1</span><button class="copy" data-copy="서울시 강남구 역삼로 9길 24 B1">복사</button></li>
+      <li><span class="k">INSTAGRAM</span><span class="v"><a href="https://www.instagram.com/vision_film_crew/" target="_blank" rel="noopener">@VISION_FILM_CREW</a></span><span></span></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <a href="#top" class="logo vf" data-vf="VISI@N FILM CREW" style="color:var(--or)" aria-label="VISION FILM CREW"></a>
+      <nav class="ft-nav">
+        <a href="#about">크루 소개</a><a href="#ministry">사역 소개</a><a href="#strengths">강점</a><a href="#partners">파트너 Team</a><a href="#portfolio">포트폴리오</a><a href="#contact">문의</a>
+      </nav>
+    </div>
+    <div class="ft-bot">
+      <span>비전필름크루 · Director 김찬혁 · 서울시 강남구 역삼로 9길 24 B1</span>
+      <span>© VISION FILM CREW. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<div class="ytm" id="ytm" role="dialog" aria-modal="true" aria-label="영상 플레이어"><button class="x" id="ytx" aria-label="닫기">✕</button><div class="box" id="ytbox"></div></div>
+
+<script>
+(function(){
+const G={"A":[20.0,166.94,"M129.8,156.49l-52.46-.08-8.14,18.49-49.2-.11L75.29,43.1l56.49-.1,55.16,131.64-49.22.26-7.92-18.41h0ZM115.27,122.79l-11.94-27.25-11.75,27.23,23.7.02H115.27Z"],"B":[206.94,136.09,"M342.88,133.18c2.02,25.22-16.68,41.59-39.33,41.61l-96.61.08V43.07l86.64-.07c6.43,0,12.48,1.43,18.29,3.37,13.28,5.62,20.82,17.97,20.63,32.35-.12,9.67-3.01,18.31-10.44,24.82,12.69,5.39,19.73,16.01,20.83,29.64h-.01H342.88ZM282.24,92.8c3.39,0,5.64-3.01,5.66-5.64.02-2-2.72-5.44-5.37-5.45l-30.78-.11.2,11.23L282.24,92.8ZM290.13,136.94c3.7,0,5.86-4.21,5.35-6.57-.43-2-3.27-4.94-5.84-4.94l-37.87-.06.07,11.73,38.29-.15h0Z"],"C":[363.03,142.81,"M439.11,138.57c10.73-1.04,19.01-6.85,23.37-16.25l43.23.04c-2.6,25.35-19.89,46.39-44.58,53.64-28.25,8.3-61.83,2.66-81.34-20.26-28.37-33.34-19.8-85.16,18.68-106.5,17.28-9.58,37.5-11.25,56.79-7.11,27,5.8,47.31,27.32,50.59,55.49l-43.17.14c-4.21-9.4-12.53-15.07-22.58-16.25-17.31-2.2-31.83,10.35-32.42,27.73-.59,17.38,13.52,31.03,31.44,29.34h-.01Z"],"D":[525.84,137.07,"M658.95,135.51c-8.17,22.82-27.89,39.59-52.55,39.7l-80.56.36V44l78.7.27c29.19.1,51.95,22.29,56.89,50.22,2.37,14.11,2.09,26.96-2.5,41.02h.02,0ZM614.81,121.21c2.36-7.24,2.35-14.31.18-21.08-3.23-8.17-10.39-13.77-19.43-13.78h-24.76l.05,47.79,26.28-.16C605.19,133.93,611.65,128.72,614.81,121.21Z"],"E":[682.91,107.36,"M790.25,126.44l-62.57.13.04,10.44,62.46.09.09,37.72h-107.36l.02-131.82,107.28.09.03,38.39-62.54.1-.02,11.04,62.43.05.14,33.77h0Z"],"F":[810.27,107.29,"M912.1,95.51l.18,34.22-57.02.14-.2,44.96-44.77.02-.02-131.81,107.06-.04.23,38.5-62.36.11-.02,13.89h56.92Z"],"G":[937.56,140.88,"M1033.49,126.4l-24.57-.41-.06-21.5,69.25-.02c2.7,33.03-11.14,62.11-43.5,70.92-16.1,4.38-32.77,4.54-48.97-.26-27.78-8.24-46.43-32.9-47.97-61.88-1.54-28.98,12.72-54.5,38.32-66.59,20.75-9.8,45.21-10.22,66.07-1.14,18.76,8.16,31.44,24.47,33.99,45.07l-42.52-.12c-5.4-5.8-12.53-10.33-20.96-10.01-16.46-1.14-29.65,10.93-30.62,27.18s11.72,30.31,28.72,30.11c8.67-.1,17.32-2.44,22.83-11.35H1033.49Z"],"H":[1098.44,126.27,"M1224.71,174.56l-45.06.26-.05-45.04h-36.01l-.13,45.06-45.02-.19.02-131.57,44.97-.08.11,47.1,36.06-.06.07-46.98,44.98-.05.06,131.55H1224.71Z"],"I":[1244.71,44.95,"M1289.66,174.68l-44.95-.02.02-131.66,44.93.06v131.62h0Z"],"J":[1309.66,105.29,"M1380.05,174.4c-23.22,5.66-52.05,1.24-63.94-20.52-4.86-8.88-7.04-18.45-6.31-28.61l44.08.12c0,5.88,2.44,8.92,6.71,9.64,3.47.59,9.25-2.18,9.26-7.25l.25-85.79,44.81.03.05,85.03c-.87,23.39-12.05,41.76-34.9,47.33v.02h0Z"],"K":[1434.95,134.55,"M1522,108.93l47.5,65.27-53.34.59-35.86-47.5-.27,47.39-45.03.12-.05-130.74,44.88-.06.46,47.02,35.27-47.02,53.38.26-46.94,64.67h0Z"],"L":[1589.5,102.4,"M1691.84,136.41l.06,38.38-102.38-.03-.02-130.46,45.08-.3.07,92.41H1691.84Z"],"M":[1711.9,154.12,"M1821.1,174.76l-.47-49.2-24.82,48.99-13.68.11-25.19-48.85-.15,48.88-44.86.05-.03-130.65,51.14-.06,25.87,48.12,25.96-48.13,51.15-.02v130.72L1821.1,174.76Z"],"N":[1886.02,130.29,"M2016.31,174.56l-46.47.31-38.5-57.23-.47,57.17-44.85-.09.11-130.67,45.18-.05,39.98,60.67.26-60.59,44.58-.05.18,130.53H2016.31Z"],"O":[2036.31,138.04,"M2171.02,130.5c-12.23,38.71-53.25,54.25-90.25,42.57-13.4-4.23-24.36-12.3-32.24-23.86-17.95-26.31-15.92-61.21,4.71-85.43,17.99-21.13,48.24-27.08,74.51-19.84,18.29,5.03,32.84,17.4,40.26,34.81,7.07,16.59,8.43,34.57,3,51.75H2171.02ZM2113.58,135.46c17.67-5.46,24.08-25.46,15.68-40.52-8.47-15.19-29.05-18.65-42.3-7.76-13.28,10.92-13.85,31.72-.43,42.99,7.4,6.22,17.28,8.31,27.05,5.29h0Z"],"O2":[2194.35,142.76,"M2326.54,81.52c13.16,22.89,14.46,48.92,1.45,72.15-11.49,20.51-33.18,34.76-58.31,36.09-25.33,1.34-49.11-10.32-62.67-30.47-14.57-21.66-17.07-49.1-4.85-72.25l34.45-58.94,59.15-.1,30.77,53.52H2326.54ZM2310.49,135.88c6.42-15.47,4-31.8-5.27-45.54-8.04-11.92-22.07-20.42-37.9-20.93-16.59-.53-31.77,7.75-40.59,20.22-9.89,14-12.1,31.11-5.63,46.84,7.58,18.41,25.29,29.87,44.68,29.74,19.33-.13,36.88-11.49,44.69-30.34h.02Z M2260.26,85.8c18.53-3.21,34.24,9.47,37.19,26.81,2.97,17.46-9.01,33.97-26.41,37.05-17.23,3.04-33.74-8.6-37.2-25.56-3.46-16.96,7.86-35.08,26.41-38.3H2260.26ZM2259.86,104.58c1.64-.96,2.63-3.89,1.87-5.34-.63-1.2-3.97-2.65-5.38-2.19-6.74,2.19-11.56,8.01-12.16,15.24-.15,1.79,2.11,4.49,3.79,4.75,5.28.8,3.71-7.67,11.88-12.46H2259.86Z"],"P":[2357.11,125.84,"M2439.76,142.67l-37.55.46-.21,31.6-44.89-.07.07-130.66,81.04.42c18.8.1,34.21,12.16,41.06,28.76,4.73,13.57,5,27.51.05,40.95-6.14,16.65-21.18,28.32-39.58,28.55h.01,0ZM2429.97,103.35c5.87-.05,8.34-6.25,7.67-10.61-.6-3.96-4.23-7.73-9.21-7.76l-26.16-.15-.02,18.76L2429.97,103.35Z"],"Q":[2502.95,139.89,"M2610.94,183.73l-11.49-17.91c-21.23,7.48-44.86,6.82-64.44-4.71-21.67-12.76-32.68-36.39-32.03-61.12s12.42-43.57,32.87-55.34c14.88-8.56,31.49-10.88,48.67-9.08,30.77,3.23,53.74,26.41,56.94,57.09,1.88,18.08-1.53,35.59-12.01,50.51l13.4,19.01-31.9,21.54h-.01ZM2564.07,129.53c12.11,3.43,24.21-1.25,31.04-10.86,6.72-9.46,6.63-22.16-.11-32-6.49-9.47-18.47-13.98-30.23-11.04-12.73,3.18-21.17,13.89-21.52,26.43-.35,12.48,7.82,23.78,20.83,27.46h0Z"],"Q2":[2662.84,142.76,"M2800.49,178.94l-38.51,18.97-8.25-19.6c-38.56,10.57-77.61-10.9-88.37-50.12-5.24-19.1-2.24-39.54,8.42-56.72l31.94-51.45,58.91-.02,30.62,52.51c15.74,26.99,13.64,59.88-7.11,84.1l12.35,22.33h0ZM2774.79,134.47c10.72-16.8,9.7-37.34-1.87-53.68-8.97-12.66-22.95-20.17-37.94-20.44-15.34-.28-29.49,7-38.88,19.43-14.21,18.8-13.37,43.98,2.47,61.59,10.33,11.49,25.1,17.25,40.92,15.58C2753.46,155.47,2766.61,147.3,2774.79,134.47Z M2730.96,140.51c-16.49-1.47-28.07-14.83-29-29.91s8.9-29.55,24.37-33.53c19.38-4.99,37.82,9.04,39.66,28.33,1.85,19.39-13.93,36.98-35.03,35.1h0ZM2727.47,96.13c1.95-1.23,3.35-3.41,2.9-5.23-.45-1.82-3.83-3.6-5.8-2.96-6.64,2.17-11.22,8-11.61,14.84-.1,1.84,2.51,4.64,4.07,4.67,5.61.12,3.56-6.96,10.44-11.32H2727.47Z"],"R":[2825.6,133.7,"M2959.3,174.2l-49.91.44-20.88-33.85-17.89.08-.1,33.66-44.91.08V44l79.4.09c15.14.02,28.39,7.27,37.21,18.7,14.45,21.44,12.45,54.28-9.59,69.14L2959.3,174.2ZM2897.61,103.2c5.74-.05,8.61-5.48,8.41-9.65-.2-4.17-3.72-8.68-8.92-8.7l-26.55-.11.08,18.7,26.99-.24S2897.61,103.2,2897.61,103.2Z"],"S":[2979.3,126.17,"M3076.11,174.59c-21.4,6.47-44.76,6.44-65.67.4-20.46-5.92-32.57-23.79-30.86-44.79l43.32-.03c.55,5.5,3.21,9.26,8.09,10.94,11.3,3.38,26.75,1.83,26.57-5.6-.04-1.76-2.41-5.24-4.37-5.68l-28.49-6.43c-9.16-2.07-18.5-4-26.69-8.12-12.1-6.07-18.43-17.17-18.7-30.33-.41-19.5,11.17-35.54,30.39-40.79,20.01-5.46,41.91-5.7,61.84.15,19.7,5.78,31.85,23,30.16,43.03l-42.17-.07c-.78-5.05-3.27-7.78-7.14-9.69-10.6-3.04-25.39-1.72-25.54,4.84-.04,1.55,2.16,4.67,3.88,5.03l31.45,6.55c22.63,4.72,41.94,12.19,43.23,37.95.97,19.47-9.48,36.65-29.3,42.64h0Z"],"T":[3125.47,119.76,"M3207.63,174.74l-44.77.13-.03-91.4-37.36-.1.17-39.35,119.51-.02.08,39.29-37.59.2v91.25H3207.63Z"],"U":[3265.23,126.42,"M3346.41,42.23l45.24-.23-.33,86.9c-.08,21.69-13.72,38.61-34.17,44.37-18.51,5.21-37.93,5.4-56.58.41-22.48-6.02-33.97-23.48-35.34-46.65V42.12l45.11-.06.06,79.77c.87,6.49,4.59,11.54,11.12,12.98,4.71,1.03,10.23,1.08,14.9-.38,5.7-1.77,9.91-7.13,9.92-13.31C3346.34,121.12,3346.41,42.23,3346.41,42.23Z"],"V":[3411.65,158.07,"M3520.32,44.13l49.4.3-53.46,130.27-51.34.2-53.27-130.57,50.18-.33,28.88,70.47,29.61-70.34h0Z"],"W":[3589.72,224.7,"M3814.42,44.17l-9.82,31.8-31.8,98.68-46.27.11-24.33-60.15-24.04,60.18-46.44-.09-42-130.32,48.95-.38,18.63,59.39,23.53-59.22,42.89-.17,23.76,59.02,18.61-58.97,48.33.12h0Z"],"X":[3834.42,150.62,"M3984.89,174.44l-53.7.44-21.85-29.17-22.39,29.27-52.53-.3,47.41-65.48-47.3-64.75,54.4-.45,21.32,28.33,21.55-28.25,53.24.38-47.46,64.61L3984.89,174.44Z"],"Y":[4005.04,146.18,"M4151.22,44.2l-50.36,88.26-.23,42.36-44.83-.02-.08-41.79-50.68-88.71,50.49-.3,22.92,40.53,22.71-40.47,50.06.14h0Z"],"Z":[4171.22,118.51,"M4289.73,174.75l-118.29.1-.22-31.34,52.81-60.06-52.69-.09.06-39.36h117.88l.05,32.14-54.96,60.54,55.2.06.16,38.01h0Z"]};
+// '@' = 렌즈(eye) O,  '#' = 렌즈 Q
+function vf(text,gap,space){
+  gap=gap==null?9:gap; space=space==null?52:space;
+  let x=0,paths='',hl=false;
+  for(const raw of text.toUpperCase()){
+    if(raw==='{'){hl=true;continue} if(raw==='}'){hl=false;continue}
+    const ch=raw==='@'?'O2':raw==='#'?'Q2':raw;
+    if(ch===' '){x+=space;continue}
+    const g=G[ch]; if(!g) continue;
+    paths+=`<path${hl?' class="hl"':''} transform="translate(${(x-g[0]).toFixed(2)},0)" d="${g[2]}"/>`;
+    x+=g[1]+gap;
+  }
+  const w=Math.max(1,x-gap);
+  return `<svg viewBox="0 40 ${w.toFixed(1)} 140" preserveAspectRatio="xMinYMid meet" fill="currentColor" aria-hidden="true">${paths}</svg>`;
+}
+window.__vf=vf;
+document.querySelectorAll('[data-vf]').forEach(el=>{el.innerHTML=vf(el.dataset.vf)});
+
+// header
+const hdr=document.getElementById('hdr');
+const onScroll=()=>hdr.classList.toggle('solid',scrollY>40);
+onScroll();addEventListener('scroll',onScroll,{passive:true});
+const burger=document.getElementById('burger');
+burger.addEventListener('click',()=>{const o=document.body.classList.toggle('menu-open');burger.setAttribute('aria-expanded',o)});
+document.querySelectorAll('.nav a').forEach(a=>a.addEventListener('click',()=>{document.body.classList.remove('menu-open');burger.setAttribute('aria-expanded',false)}));
+
+// active nav
+const links=[...document.querySelectorAll('.nav a:not(.cta)')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+const so=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>s&&so.observe(s));
+
+// reveal + counters
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);
+  e.target.querySelectorAll('[data-count]').forEach(countUp)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+function countUp(el){const t=+el.dataset.count,sm=el.querySelector('small').outerHTML;let s=null;
+  const step=ts=>{s=s||ts;const p=Math.min(1,(ts-s)/1200);el.innerHTML=Math.round(t*(1-Math.pow(1-p,3)))+sm;if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}
+
+// before/after
+const ba=document.getElementById('ba'),rng=ba.querySelector('input');
+const setP=v=>ba.style.setProperty('--p',v+'%');
+rng.addEventListener('input',()=>setP(rng.value));
+let dragging=false;
+const fromEv=e=>{const r=ba.getBoundingClientRect();const v=Math.max(0,Math.min(100,(e.clientX-r.left)/r.width*100));rng.value=v;setP(v)};
+ba.addEventListener('pointerdown',e=>{dragging=true;fromEv(e)});
+addEventListener('pointermove',e=>{if(dragging)fromEv(e)});
+addEventListener('pointerup',()=>dragging=false);
+
+// portfolio tabs
+const tabs=document.querySelectorAll('.tab'),groups=document.querySelectorAll('.pf-group');
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>{x.classList.toggle('on',x===t);x.setAttribute('aria-selected',x===t)});
+  groups.forEach(g=>{g.hidden=!(t.dataset.f==='all'||g.dataset.g===t.dataset.f);
+    if(!g.hidden)g.querySelectorAll('.reveal').forEach(r=>r.classList.add('in'))});
+}));
+
+// carousel
+const track=document.getElementById('track');
+const by=d=>track.scrollBy({left:d*(track.querySelector('.card').offsetWidth+20),behavior:'smooth'});
+document.getElementById('prev').onclick=()=>by(-1);
+document.getElementById('next').onclick=()=>by(1);
+
+// marquee
+const words=['VISI@N FILM CREW','LIVE STREAMING','W@RSHIP FILM','MUSIC VIDE@'];
+const mqHtml=words.map(w=>`<span class="vf">${vf(w)}</span><span class="dot"></span>`).join('');
+document.getElementById('mq').innerHTML=mqHtml;document.getElementById('mq2').innerHTML=mqHtml;
+
+// youtube
+const ytSrc=id=>`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+const ytFrame=id=>`<iframe src="${ytSrc(id)}" title="YouTube 영상" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+const ytm=document.getElementById('ytm'),ytbox=document.getElementById('ytbox');
+const closeYt=()=>{ytm.classList.remove('open');document.body.classList.remove('modal');setTimeout(()=>ytbox.innerHTML='',300)};
+document.querySelectorAll('[data-yt]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();ytbox.innerHTML=ytFrame(a.dataset.yt);ytm.classList.add('open');document.body.classList.add('modal')}));
+document.getElementById('ytx').onclick=closeYt;
+ytm.addEventListener('click',e=>{if(e.target===ytm)closeYt()});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&ytm.classList.contains('open'))closeYt()});
+const reel=document.getElementById('reel');
+reel.addEventListener('click',e=>{if(reel.classList.contains('playing'))return;e.preventDefault();reel.classList.add('playing');reel.insertAdjacentHTML('beforeend',ytFrame(reel.dataset.ytInline))});
+
+// copy
+const toast=document.getElementById('toast');let tt;
+const show=m=>{toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),1800)};
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText(b.dataset.copy);show('복사했어요: '+b.dataset.copy)}catch(e){show(b.dataset.copy)}}));
+
+})();
+</script>
+</body>
+</html>
